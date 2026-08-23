@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Enquête PharmaLink — trouver ses médicaments à Dakar</title>
+    <meta
+      name="description"
+      content="Deux minutes pour nous aider à améliorer l'information sur la disponibilité des médicaments au Sénégal."
+    />
+
+    <!-- ===== Aperçu du lien (WhatsApp, Facebook, Telegram) =====
+     C'est ce que les gens voient AVANT de cliquer.
+     og:image doit être une vraie image en ligne, en URL absolue,
+     idéalement 1200x630 px et moins de 300 Ko. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://enquete.pharmalink.sn/" />
+    <meta property="og:title" content="Enquête PharmaLink — 2 minutes" />
+    <meta
+      property="og:description"
+      content="Vous cherchez souvent un médicament sans savoir où il est disponible ? Répondez à quelques questions, c'est anonyme."
+    />
+    <meta
+      property="og:image"
+      content="https://enquete.pharmalink.sn/og-enquete.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta
+      property="og:image:alt"
+      content="Où est mon médicament ? Enquête PharmaLink"
+    />
+    <meta property="og:locale" content="fr_SN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0f766e" />
+
+    <style>
+      :root {
+        --bg: #f6f7f6;
+        --surface: #ffffff;
+        --text: #14201d;
+        --muted: #5c6b67;
+        --border: #dfe4e2;
+        --accent: #0f766e;
+        --accent-ink: #ffffff;
+        --accent-soft: #e6f2f0;
+        --radius: 14px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #101614;
+          --surface: #182320;
+          --text: #eef3f1;
+          --muted: #9aaba6;
+          --border: #2a3a35;
+          --accent: #2dd4bf;
+          --accent-ink: #05201c;
+          --accent-soft: #14312c;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        min-height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 18px 40px;
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      main {
+        width: 100%;
+        max-width: 460px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: -0.01em;
+        margin-bottom: 26px;
+      }
+
+      .brand .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: none;
+      }
+
+      h1 {
+        font-size: clamp(24px, 6.5vw, 30px);
+        line-height: 1.22;
+        letter-spacing: -0.02em;
+        margin: 0 0 12px;
+      }
+
+      .lede {
+        margin: 0 0 8px;
+        color: var(--muted);
+        font-size: 15.5px;
+      }
+
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 14px;
+        margin: 0 0 26px;
+        padding: 0;
+        list-style: none;
+        font-size: 13.5px;
+        color: var(--muted);
+      }
+
+      .meta li::before {
+        content: "•";
+        margin-right: 6px;
+        color: var(--accent);
+      }
+
+      .question {
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+
+      .choices {
+        display: grid;
+        gap: 10px;
+      }
+
+      .choice {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 17px 16px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        text-decoration: none;
+        color: inherit;
+        transition:
+          border-color 0.15s,
+          transform 0.06s,
+          background 0.15s;
+      }
+
+      .choice:hover,
+      .choice:focus-visible {
+        border-color: var(--accent);
+        background: var(--accent-soft);
+        outline: none;
+      }
+
+      .choice:active {
+        transform: scale(0.99);
+      }
+
+      .choice .icon {
+        width: 42px;
+        height: 42px;
+        flex: none;
+        display: grid;
+        place-items: center;
+        border-radius: 11px;
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+
+      .choice:hover .icon,
+      .choice:focus-visible .icon {
+        background: var(--accent);
+        color: var(--accent-ink);
+      }
+
+      .choice .icon svg {
+        width: 21px;
+        height: 21px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .choice .label {
+        font-weight: 650;
+        font-size: 16px;
+        letter-spacing: -0.01em;
+        display: block;
+      }
+
+      .choice .sub {
+        display: block;
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 1px;
+      }
+
+      .choice .chev {
+        margin-left: auto;
+        color: var(--muted);
+        flex: none;
+      }
+
+      footer {
+        margin-top: 26px;
+        padding-top: 18px;
+        border-top: 1px solid var(--border);
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+
+      footer p {
+        margin: 0 0 6px;
+      }
+      footer a {
+        color: inherit;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <div class="brand"><span class="dot"></span> PharmaLink</div>
+
+      <h1>
+        Et si votre expérience améliorait l'accès aux médicaments pour des
+        milliers de personnes ?
+      </h1>
+
+      <p class="lede">
+        Nous réalisons une étude pour mieux comprendre les difficultés
+        rencontrées pour trouver des médicaments en pharmacie. Votre expérience
+        et vos besoins nous aideront à imaginer un service simple, pratique et
+        adapté à la réalité des patients comme des professionnels de santé.
+      </p>
+
+      <ul class="meta">
+        <li>2 minutes</li>
+        <li>Anonyme</li>
+        <li>Aucune donnée de santé demandée</li>
+      </ul>
+
+      <p class="question">Vous êtes&nbsp;?</p>
+
+      <div class="choices">
+        <!-- Le href est écrit en dur : la page marche même si le JS ne s'exécute pas.
+         Le script ci-dessous ne fait qu'y ajouter la source du clic. -->
+        <a
+          class="choice"
+          data-profil="patient"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfWTYpDQV7PkbtE4MYFowFMcQ8hSZ9LTU8wYgube6oqoynqcA/viewform"
+        >
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M16.5 16.5 21 21" />
+            </svg>
+          </span>
+          <span>
+            <span class="label">Je cherche des médicaments</span>
+            <span class="sub">Pour moi ou pour un proche</span>
+          </span>
+          <span class="chev" aria-hidden="true">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m9 6 6 6-6 6" />
+            </svg>
+          </span>
+        </a>
+
+        <a
+          class="choice"
+          data-profil="pharmacien"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfuXI1zgxItEPZnuFjQGJby11HjDTqQzuGDVkP9HF1499Zjxg/viewform"
+        >
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 4v16M4 12h16" /></svg>
+          </span>
+          <span>
+            <span class="label">Je travaille en officine</span>
+            <span class="sub">Pharmacien, préparateur, gérant</span>
+          </span>
+          <span class="chev" aria-hidden="true">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m9 6 6 6-6 6" />
+            </svg>
+          </span>
+        </a>
+      </div>
+
+      <footer>
+        <p>
+          Réponses anonymes, utilisées uniquement pour concevoir le service.
+          Aucun nom d'officine n'est mis en avant.
+        </p>
+        <p><a href="https://pharmalink.sn">pharmalink.sn</a></p>
+        <p>
+          Une question&nbsp;?
+          <a href="mailto:contact@pharmalink.sn">contact@pharmalink.sn</a>
+        </p>
+      </footer>
+    </main>
+
+    <script>
+      (function () {
+        "use strict";
+
+        /* Formulaires générés le 2026-08-23 par creer-formulaires.gs.
+     entrySource = identifiant du champ "Source" de chaque formulaire.
+     Mettre entrySource à null désactive le suivi de canal.               */
+        var FORMS = {
+          patient: {
+            url: "https://docs.google.com/forms/d/e/1FAIpQLSfWTYpDQV7PkbtE4MYFowFMcQ8hSZ9LTU8wYgube6oqoynqcA/viewform",
+            entrySource: "entry.992110840",
+          },
+          pharmacien: {
+            url: "https://docs.google.com/forms/d/e/1FAIpQLSfuXI1zgxItEPZnuFjQGJby11HjDTqQzuGDVkP9HF1499Zjxg/viewform",
+            entrySource: "entry.1705717207",
+          },
+        };
+
+        var params = new URLSearchParams(window.location.search);
+
+        // Canal de diffusion : /enquete?src=wa-groupes, ?src=fb, ?src=tg…
+        var src = (params.get("src") || "direct").slice(0, 40);
+
+        function lienVers(profil) {
+          var f = FORMS[profil];
+          if (!f) return null;
+          if (!f.entrySource) return f.url;
+          var sep = f.url.indexOf("?") === -1 ? "?" : "&";
+          return (
+            f.url +
+            sep +
+            f.entrySource +
+            "=" +
+            encodeURIComponent(src) +
+            "&usp=pp_url"
+          );
+        }
+
+        // 1. On enrichit les deux boutons avec la source.
+        document.querySelectorAll("[data-profil]").forEach(function (a) {
+          var href = lienVers(a.dataset.profil);
+          if (href) a.href = href;
+        });
+
+        // 2. Lien direct sans passer par la porte :
+        //    /enquete?profil=pharmacien&src=visite-officine
+        //    Pratique pour les contacts pharmaciens approchés en direct.
+        var direct = params.get("profil");
+        if (direct && FORMS[direct]) {
+          window.location.replace(lienVers(direct));
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { width: 1200px; height: 630px; }
+
+  body {
+    position: relative;
+    overflow: hidden;
+    background: #0b3d38;
+    background-image:
+      radial-gradient(1100px 620px at 88% -18%, #17786c 0%, rgba(23,120,108,0) 62%),
+      radial-gradient(760px 520px at -8% 112%, #0a5148 0%, rgba(10,81,72,0) 60%);
+    font-family: "Inter", "Inter Display", "Carlito", sans-serif;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 68px 76px;
+  }
+
+  /* croix d'officine, très discrète, en filigrane */
+  .watermark {
+    position: absolute;
+    right: -70px;
+    bottom: -110px;
+    width: 470px;
+    height: 470px;
+    opacity: .07;
+  }
+
+  .watermark rect { fill: #ffffff; }
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+  }
+
+  .dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #5eead4;
+  }
+
+  .brand {
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #a7f3e6;
+  }
+
+  main { position: relative; }
+
+  h1 {
+    font-size: 104px;
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    max-width: 15ch;
+  }
+
+  h1 em {
+    font-style: normal;
+    color: #5eead4;
+  }
+
+  footer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .pill {
+    font-size: 30px;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    padding: 15px 30px;
+    border-radius: 999px;
+    background: #5eead4;
+    color: #04302b;
+  }
+
+  .note {
+    font-size: 30px;
+    font-weight: 500;
+    color: #b9e6dd;
+    letter-spacing: -0.01em;
+  }
+</style>
+</head>
+<body>
+
+  <svg class="watermark" viewBox="0 0 100 100" aria-hidden="true">
+    <rect x="38" y="8" width="24" height="84" rx="6"/>
+    <rect x="8" y="38" width="84" height="24" rx="6"/>
+  </svg>
+
+  <header>
+    <span class="dot"></span>
+    <span class="brand">PharmaLink</span>
+  </header>
+
+  <main>
+    <h1>Où est <em>mon médicament</em> ?</h1>
+  </main>
+
+  <footer>
+    <span class="pill">2 minutes</span>
+    <span class="note">Aidez-nous à construire le service</span>
+  </footer>
+
+</body>
+</html>
