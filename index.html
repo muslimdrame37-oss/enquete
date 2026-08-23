@@ -34,32 +34,26 @@
     />
     <meta property="og:locale" content="fr_SN" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#0f766e" />
+    <meta name="theme-color" content="#ffffff" />
 
     <style>
+      /* Page blanche, texte dans le vert profond de la vignette.
+         Pas de variante sombre : la page garde le meme rendu partout. */
       :root {
-        --bg: #f6f7f6;
-        --surface: #ffffff;
-        --text: #14201d;
-        --muted: #5c6b67;
-        --border: #dfe4e2;
+        --bg: #ffffff;
+        --surface: #f5faf9;
+        --text: #0b3d38;
+        --muted: #4c6f69;
+        --border: #dceae7;
         --accent: #0f766e;
         --accent-ink: #ffffff;
         --accent-soft: #e6f2f0;
         --radius: 14px;
       }
 
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #101614;
-          --surface: #182320;
-          --text: #eef3f1;
-          --muted: #9aaba6;
-          --border: #2a3a35;
-          --accent: #2dd4bf;
-          --accent-ink: #05201c;
-          --accent-soft: #14312c;
-        }
+      /* La page impose son fond clair meme si le systeme est en mode sombre. */
+      :root {
+        color-scheme: only light;
       }
 
       * {
